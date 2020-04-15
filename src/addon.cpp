@@ -8,8 +8,6 @@
 
 using namespace v8;
 
-
-
 void VerifyCert(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 
     if(info.Length() < 3) {
@@ -22,10 +20,14 @@ void VerifyCert(const Nan::FunctionCallbackInfo<v8::Value>& info) {
         return;
     }
 
-    String::Utf8Value pem_cert(info[0]);
-    String::Utf8Value pem_ca(info[1]);
+    Nan::Utf8String pem_cert(info[0]);
+    Nan::Utf8String pem_ca(info[1]);
 
     v8::Local<v8::Function> cb = info[2].As<v8::Function>();
+
+
+    // std::cout << *pem_cert << std::endl
+    //         << *pem_ca << std::endl;
 
     //OpenSSL_add_all_algorithms();
     EVP_add_digest(EVP_sha1());
@@ -67,24 +69,18 @@ void VerifyCert(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 
     int ret = X509_verify_cert(ctx);
 
+    Nan::AsyncResource resource("nan:makeCallback");
 
     if(ret!= 1) {
         int err = X509_STORE_CTX_get_error(ctx);
         const char* errString = X509_verify_cert_error_string(err);
 
         v8::Local<v8::Value> argv[2] = { Nan::New(errString).ToLocalChecked(), Nan::New(0) };
-        Nan::MakeCallback(Nan::GetCurrentContext()->Global(), cb, 2, argv);
+        resource.runInAsyncScope(Nan::GetCurrentContext()->Global(), cb, 2, argv);
     } else {
         v8::Local<v8::Value> argv[2] = { Nan::Null(), Nan::New(1) };
-        Nan::MakeCallback(Nan::GetCurrentContext()->Global(), cb, 2, argv);
+        resource.runInAsyncScope(Nan::GetCurrentContext()->Global(), cb, 2, argv);
     }
-
-
-
-
-
-    // std::cout << *pem_cert << std::endl
-    //         << *pem_ca << std::endl;
 
     // int ret = verify_cert(*pem_cert, *pem_ca);
     // v8::Local<v8::Number> num = Nan::New(ret);
@@ -101,9 +97,10 @@ void VerifyCert(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 }
 
 void Init(v8::Local<v8::Object> exports) {
-    exports->Set(Nan::New("verifyCert").ToLocalChecked(),
-                Nan::New<v8::FunctionTemplate>(VerifyCert)->GetFunction());
+  v8::Local<v8::Context> context = exports->CreationContext();
+  exports->Set(context,
+               Nan::New("verifyCert").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(VerifyCert)->GetFunction(context).ToLocalChecked());
 }
-
 
 NODE_MODULE(addon, Init);

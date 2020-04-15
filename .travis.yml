@@ -3,8 +3,7 @@ language:
 
 env:
     matrix:
-        - NODE_VERSION="4"
-        - NODE_VERSION="6"
+        - NODE_VERSION="12.16.2"
 
 os:
     - linux
@@ -12,7 +11,7 @@ os:
 
 notifications:
   email:
-    - beeven@hotmail.com
+    - kinshuk2jain@gmail.com
 
 addons:
     apt:

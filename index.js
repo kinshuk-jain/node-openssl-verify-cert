@@ -1,7 +1,6 @@
 // Created by Beeven on 1/12/2016
 var addon = require("./build/Release/addon");
 
-
 /*
  Verify Certificate with openssl
   usage:

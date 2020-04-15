@@ -1,5 +1,4 @@
-#node-openssl-verify-cert
-
+#### node-openssl-verify-cert-updated
 
 Verify a certificate against a trusted CA bundle.
 
@@ -14,14 +13,14 @@ Installation
 -------------
 ### Linux
 ```bash
-$ npm install node-openssl-verify-cert
+$ npm install node-openssl-verify-cert-updated
 ```
 
 ### Mac
 On macOS 10.12 sierra, openssl must be install via brew. The default location of openssl is ```/usr/local/opt/openssl```.
 ```bash
 $ brew install openssl
-$ npm install node-openssl-verify-cert
+$ npm install node-openssl-verify-cert-updated
 ```
 
 ### Windows
@@ -31,7 +30,7 @@ It can be downloaded at  [http://slproweb.com/products/Win32OpenSSL.html](http:/
 Make sure you have installed the full version which contains development libraries.
 
 ```bash
-\> npm install node-openssl-verify-cert --openssl_root="C:/OpenSSL-Win64 (where openssl is installed)"
+\> npm install node-openssl-verify-cert-updated --openssl_root="C:/OpenSSL-Win64 (where openssl is installed)"
 ```
 
 Usage
@@ -88,3 +87,7 @@ co(function* (){
 })
 
 ```
+
+#### Note 
+This package was originally authored by Beeven Yip <beeven@hotmail.com> and was forked from `node-openssl-verify-cert`.
+It did not work with node v12 and higher. This package is simply an update that works for node 12 and above
