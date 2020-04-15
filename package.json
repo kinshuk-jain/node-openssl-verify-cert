@@ -1,6 +1,6 @@
 {
     "name": "node-openssl-verify-cert-updated",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Verify certificates with openssl",
     "main": "index.js",
     "repository": {
