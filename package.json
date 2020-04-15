@@ -1,11 +1,11 @@
 {
-    "name": "node-openssl-verify-cert",
-    "version": "0.9.9",
+    "name": "node-openssl-verify-cert-updated",
+    "version": "1.0.0",
     "description": "Verify certificates with openssl",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/beeven/node-openssl-verify-cert"
+        "url": "https://github.com/kinshuk-jain/node-openssl-verify-cert-updated"
     },
     "scripts": {
         "test": "mocha"

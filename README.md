@@ -4,9 +4,7 @@ Verify a certificate against a trusted CA bundle.
 
 This package utilizes OpenSSL library, rather than spawning a child process like many of other packages.
 
-[![Build Status](https://travis-ci.org/beeven/node-openssl-verify-cert.svg?branch=master)](https://travis-ci.org/beeven/node-openssl-verify-cert)
-[![Dependencies](https://david-dm.org/beeven/node-openssl-verify-cert.svg)](https://david-dm.org/beeven/node-openssl-verify-cert)
-
+[![Build Status](https://travis-ci.org/kinshuk-jain/node-openssl-verify-cert-updated.svg?branch=master)](https://travis-ci.org/kinshuk-jain/node-openssl-verify-cert-updated)
 
 
 Installation
