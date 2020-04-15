@@ -1,10 +1,14 @@
 #### node-openssl-verify-cert-updated
 
-Verify a certificate against a trusted CA bundle.
+Verify a certificate against a trusted CA bundle. Works with node 12+
 
 This package utilizes OpenSSL library, rather than spawning a child process like many of other packages.
 
 [![Build Status](https://travis-ci.org/kinshuk-jain/node-openssl-verify-cert-updated.svg?branch=master)](https://travis-ci.org/kinshuk-jain/node-openssl-verify-cert-updated)
+
+#### Note 
+This package was originally authored by Beeven Yip <beeven@hotmail.com> and was forked from `node-openssl-verify-cert`.
+It did not work with node v12 and higher. This package is simply an update that works for node 12 and above
 
 
 Installation
@@ -85,7 +89,3 @@ co(function* (){
 })
 
 ```
-
-#### Note 
-This package was originally authored by Beeven Yip <beeven@hotmail.com> and was forked from `node-openssl-verify-cert`.
-It did not work with node v12 and higher. This package is simply an update that works for node 12 and above
